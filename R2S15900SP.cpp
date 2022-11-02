@@ -32,12 +32,12 @@ void R2S15900SP::setInput(int in, int gain, int mute){
 
 void R2S15900SP::set_Bass(int surr, int mode, int bass){
        if(bass >= 0){bass = bass + 0b10000;}
-  writeWire(R2S15900SP_BASS, mode + (surr << 2) + (bass << 3));
+  writeWire(R2S15900SP_BASS, mode + (surr << 2) + (abs(bass) << 3));
 }
 
 void R2S15900SP::set_Treb(int treb){
        if(treb >= 0){treb = treb + 0b10000;}
-  writeWire(R2S15900SP_TREB, (treb << 3));
+  writeWire(R2S15900SP_TREB, (abs(treb) << 3));
 }
 
 void R2S15900SP::writeWire(char a, char b){
